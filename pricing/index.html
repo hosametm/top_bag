@@ -105,6 +105,7 @@
         <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="clear()">Clear</button> -->
       </div>
     </form>
+    <p id="price"></p>
     <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
 
 
@@ -130,9 +131,10 @@
         price = (parseFloat(cloth_price) * parseFloat(finall_weight)) + parseFloat(0.15)
       }
 
-      console.log(price);
-    }
+      // console.log(price);
+      $('#price').text('Price is : ' + price);
 
+    }
 
   </script>
 
