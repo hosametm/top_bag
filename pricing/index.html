@@ -98,11 +98,11 @@
 
 
       <div class="checkbox mb-3">
-        <label class="btn btn-primary" style="width: 49%; background-color: #382e84;">
-          <input type="checkbox" id="hand" value="1" style="margin: 4px;"> Out Hand
+        <label class="btn btn-secondary " style="width: 49%; " id="hand_lable">
+          <input type="checkbox" id="hand" value="1" style="margin: 4px;" onchange="change_class('hand','hand_lable')"> Out Hand
         </label>
-        <label class="btn btn-primary" style="width: 49%; background-color: #382e84;">
-          <input type="checkbox" id="face" value="1" style="margin: 4px;"> Double face
+        <label class="btn btn-secondary" style="width: 49%; " id="face_lable">
+          <input type="checkbox" id="face" value="1" style="margin: 4px;" onchange="change_class('face','face_lable')"> Double face
         </label>
       </div>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
@@ -131,72 +131,77 @@
       if (height == 15 && width == 20 || height == 20 && width == 15) {
         price = 0.75;
       }
-      if (height == 20 && width == 20 || height == 20 && width == 20) {
+      else if (height == 20 && width == 20 || height == 20 && width == 20) {
         price = 0.82;
       }
-      if (height == 25 && width == 20 || height == 20 && width == 25) {
+      else if (height == 25 && width == 20 || height == 20 && width == 25) {
         price = 0.75;
       }
-      if (height == 25 && width == 30 || height == 30 && width == 25) {
+      else if (height == 25 && width == 30 || height == 30 && width == 25) {
         price = 1.10;
       }
-      if (height == 30 && width == 30) {
+      else if (height == 30 && width == 30) {
         price = 1.20;
       }
-      if (height == 35 && width == 30 || height == 30 && width == 35) {
+      else if (height == 35 && width == 30 || height == 30 && width == 35) {
         price = 1.30;
       }
-      if (height == 35 && width == 35 || height == 35 && width == 35) {
+      else if (height == 35 && width == 35 || height == 35 && width == 35) {
         price = 1.50;
       }
-      if (height == 40 && width == 35 || height == 35 && width == 40) {
+      else if (height == 40 && width == 35 || height == 35 && width == 40) {
         price = 1.60;
       }
-      if (height == 40 && width == 40 || height == 40 && width == 40) {
+      else if (height == 40 && width == 40 || height == 40 && width == 40) {
         price = 1.90;
       }
-
-
-      if (height == 45 && width == 40 || height == 40 && width == 45) {
+      else if (height == 45 && width == 40 || height == 40 && width == 45) {
         price = 2.15;
       }
-      if (height == 45 && width == 45 || height == 45 && width == 45) {
+      else if (height == 45 && width == 45 || height == 45 && width == 45) {
         price = 2.25;
       }
-      if (height == 50 && width == 40 || height == 40 && width == 50) {
+      else if (height == 50 && width == 40 || height == 40 && width == 50) {
         price = 2.25;
       }
-      if (height == 50 && width == 45 || height == 45 && width == 50) {
+      else if (height == 50 && width == 45 || height == 45 && width == 50) {
         price = 2.45;
       }
-      if (height == 50 && width == 50 || height == 50 && width == 50) {
+      else if (height == 50 && width == 50 || height == 50 && width == 50) {
         price = 2.70;
       }
-      if (height == 55 && width == 40 || height == 40 && width == 55) {
+      else if (height == 55 && width == 40 || height == 40 && width == 55) {
         price = 2.45;
       }
-      if (height == 55 && width == 45 || height == 45 && width == 55) {
+      else if (height == 55 && width == 45 || height == 45 && width == 55) {
         price = 2.70;
       }
-      if (height == 55 && width == 50 || height == 50 && width == 55) {
+      else if (height == 55 && width == 50 || height == 50 && width == 55) {
         price = 2.90;
       }
-      if (height == 55 && width == 55 || height == 55 && width == 55) {
+      else if (height == 55 && width == 55 || height == 55 && width == 55) {
         price = 3.15;
       }
-      if (height == 60 && width == 55 || height == 55 && width == 60) {
+      else if (height == 60 && width == 55 || height == 55 && width == 60) {
         price = 3.30;
+      } else {
+        $('#price').text('Invalid Input');
+        return 0;
+
       }
 
       if (hand == true) {
         price += 0.15;
+
       } else {
         price = price;
       }
-      if(face==true){
+      if (face == true) {
         price += 0.10;
-      }else{
+
+      } else {
         price = price;
+
 
       }
       // console.log(price);
@@ -204,6 +209,19 @@
 
     }
 
+    function change_class(name,label_name) {
+      var checked = $('#' + name).is(":checked")
+      if (checked == true) {
+        $('#' + label_name).removeClass('btn-secondary')
+        $('#' + label_name).addClass('btn-primary')
+      } else {
+        price = price;
+        $('#' + label_name).removeClass('btn-primary')
+        $('#' + label_name).addClass('btn-secondary')
+
+      }
+      console.log(checked);
+    }
   </script>
 
 </body>
