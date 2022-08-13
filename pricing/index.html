@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.101.0">
+  <title>Top Bag</title>
+
+  <!-- <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sign-in/"> -->
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .form-floating {
+      margin: 8px;
+    }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="pricing.css" rel="stylesheet">
+</head>
+
+<body class="text-center">
+
+  <main class="form-signin w-100 m-auto">
+    <form>
+      <img class="d-block mx-auto mb-4" src="../assets/images/logo.jpg" alt="" height="60">
+      <h1 class="h3 mb-3 fw-normal">Welcome To Top Bag</h1>
+
+      <div class="form-floating">
+        <input type="number" class="form-control" id="height" placeholder="Height">
+        <label for="floatingInput">Height (cm)</label>
+      </div>
+      <div class="form-floating">
+        <input type="number" class="form-control" id="width" placeholder="Width">
+        <label for="floatingPassword">Width (cm)</label>
+      </div>
+      <div class="form-floating">
+        <input type="number" class="form-control" id="weight" placeholder="weight (gm)" value="65">
+        <label for="floatingPassword">weight (gm)</label>
+      </div>
+
+
+      <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" id="hand" value="1"> Out Hand
+        </label>
+      </div>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3" onclick="Calculate()">Calculate</button>
+        <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="clear()">Clear</button> -->
+      </div>
+    </form>
+    <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+
+
+  </main>
+  <script src="../assets/dist/js/jquery-3.6.0.min.js"></script>
+
+  <script>
+    function Calculate() {
+      var height = $('#height').val();
+      var width = $('#width').val();
+      var weight = $('#weight').val();
+      var hand = $('#hand').is(":checked")
+      var in_hand_height = parseFloat(height) + 20
+      // var out_hand_height = parseFloat(height) + 15
+      finall_weight = (((in_hand_height * width) / 10000) * 2) * weight
+
+      var cloth_price = 0.060
+      if (hand == false) {
+        price = parseFloat(cloth_price) * parseFloat(finall_weight)
+
+
+      } else {
+        price = (parseFloat(cloth_price) * parseFloat(finall_weight)) + parseFloat(0.15)
+      }
+
+      console.log(price);
+    }
+
+
+  </script>
+
+</body>
+
+</html>
