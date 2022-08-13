@@ -84,22 +84,25 @@
       <h4 id="price" style="margin: 8px; color: #382e84;"></h4>
 
       <div class="form-floating">
-        <input type="number" class="form-control" id="height" placeholder="Height">
+        <input type="number" class="form-control" id="height" placeholder="Height" step="5">
         <label for="floatingInput">Height (cm)</label>
       </div>
       <div class="form-floating">
-        <input type="number" class="form-control" id="width" placeholder="Width">
+        <input type="number" class="form-control" id="width" placeholder="Width" step="5">
         <label for="floatingPassword">Width (cm)</label>
       </div>
-      <div class="form-floating">
+      <!-- <div class="form-floating">
         <input type="number" class="form-control" id="weight" placeholder="weight (gm)" value="65">
         <label for="floatingPassword">weight (gm)</label>
-      </div>
+      </div> -->
 
 
       <div class="checkbox mb-3">
-        <label>
-          <input type="checkbox" id="hand" value="1"> Out Hand
+        <label class="btn btn-primary" style="width: 49%; background-color: #382e84;">
+          <input type="checkbox" id="hand" value="1" style="margin: 4px;"> Out Hand
+        </label>
+        <label class="btn btn-primary" style="width: 49%; background-color: #382e84;">
+          <input type="checkbox" id="face" value="1" style="margin: 4px;"> Double face
         </label>
       </div>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
@@ -117,23 +120,87 @@
     function Calculate() {
       var height = $('#height').val();
       var width = $('#width').val();
-      var weight = $('#weight').val();
+      // var weight = $('#weight').val();
       var hand = $('#hand').is(":checked")
-      var in_hand_height = parseFloat(height) + 20
+      var face = $('#face').is(":checked")
+      // var in_hand_height = parseFloat(height) + 20
       // var out_hand_height = parseFloat(height) + 15
-      finall_weight = (((in_hand_height * width) / 10000) * 2) * weight
+      // finall_weight = (((in_hand_height * width) / 10000) * 2) * weight
 
-      var cloth_price = 0.060
-      if (hand == false) {
-        price = parseFloat(cloth_price) * parseFloat(finall_weight)
-
-
-      } else {
-        price = (parseFloat(cloth_price) * parseFloat(finall_weight)) + parseFloat(0.15)
+      // var cloth_price = 0.048
+      if (height == 15 && width == 20 || height == 20 && width == 15) {
+        price = 0.75;
+      }
+      if (height == 20 && width == 20 || height == 20 && width == 20) {
+        price = 0.82;
+      }
+      if (height == 25 && width == 20 || height == 20 && width == 25) {
+        price = 0.75;
+      }
+      if (height == 25 && width == 30 || height == 30 && width == 25) {
+        price = 1.10;
+      }
+      if (height == 30 && width == 30) {
+        price = 1.20;
+      }
+      if (height == 35 && width == 30 || height == 30 && width == 35) {
+        price = 1.30;
+      }
+      if (height == 35 && width == 35 || height == 35 && width == 35) {
+        price = 1.50;
+      }
+      if (height == 40 && width == 35 || height == 35 && width == 40) {
+        price = 1.60;
+      }
+      if (height == 40 && width == 40 || height == 40 && width == 40) {
+        price = 1.90;
       }
 
+
+      if (height == 45 && width == 40 || height == 40 && width == 45) {
+        price = 2.15;
+      }
+      if (height == 45 && width == 45 || height == 45 && width == 45) {
+        price = 2.25;
+      }
+      if (height == 50 && width == 40 || height == 40 && width == 50) {
+        price = 2.25;
+      }
+      if (height == 50 && width == 45 || height == 45 && width == 50) {
+        price = 2.45;
+      }
+      if (height == 50 && width == 50 || height == 50 && width == 50) {
+        price = 2.70;
+      }
+      if (height == 55 && width == 40 || height == 40 && width == 55) {
+        price = 2.45;
+      }
+      if (height == 55 && width == 45 || height == 45 && width == 55) {
+        price = 2.70;
+      }
+      if (height == 55 && width == 50 || height == 50 && width == 55) {
+        price = 2.90;
+      }
+      if (height == 55 && width == 55 || height == 55 && width == 55) {
+        price = 3.15;
+      }
+      if (height == 60 && width == 55 || height == 55 && width == 60) {
+        price = 3.30;
+      }
+
+      if (hand == true) {
+        price += 0.15;
+      } else {
+        price = price;
+      }
+      if(face==true){
+        price += 0.10;
+      }else{
+        price = price;
+
+      }
       // console.log(price);
-      $('#price').text('Price is : ' + price + ' pound');
+      $('#price').text('Price is : ' + price.toFixed(2) + ' pound');
 
     }
 
