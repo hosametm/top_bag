@@ -99,14 +99,17 @@
 
       <div class="checkbox mb-3">
         <label class="btn btn-secondary " style="width: 49%; " id="hand_lable">
-          <input type="checkbox" hidden id="hand" value="1" style="margin: 4px;" onchange="change_class('hand','hand_lable')"> Outside hand
+          <input type="checkbox" hidden id="hand" value="1" style="margin: 4px;"
+            onchange="change_class('hand','hand_lable')"> Outside hand
         </label>
         <label class="btn btn-secondary" style="width: 49%; " id="face_lable">
-          <input type="checkbox" hidden id="face" value="1" style="margin: 4px;" onchange="change_class('face','face_lable')"> Double face
+          <input type="checkbox" hidden id="face" value="1" style="margin: 4px;"
+            onchange="change_class('face','face_lable')"> Double face
         </label>
       </div>
       <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <button type="button" class="btn btn-primary btn-lg px-4 gap-3" style="width: 100%;" onclick="Calculate()">Calculate</button>
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3" style="width: 100%;"
+          onclick="Calculate()">Calculate</button>
         <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="clear()">Clear</button> -->
       </div>
     </form>
@@ -129,61 +132,67 @@
 
       // var cloth_price = 0.048
       if (height == 15 && width == 20 || height == 20 && width == 15) {
-        price = 0.75;
+        price = 0.90;
       }
       else if (height == 20 && width == 20 || height == 20 && width == 20) {
-        price = 0.82;
+        price = 0.95;
       }
       else if (height == 25 && width == 20 || height == 20 && width == 25) {
-        price = 0.75;
+        price = 1.15;
       }
-      else if (height == 25 && width == 30 || height == 30 && width == 25) {
-        price = 1.10;
-      }
-      else if (height == 30 && width == 30) {
+      else if (height == 25 && width == 25 || height == 25 && width == 25) {
         price = 1.20;
       }
-      else if (height == 35 && width == 30 || height == 30 && width == 35) {
+      else if (height == 25 && width == 30 || height == 30 && width == 25) {
         price = 1.30;
       }
+      else if (height == 30 && width == 30 || height == 30 && width == 30) {
+        price = 1.45;
+      }
+      else if (height == 35 && width == 30 || height == 30 && width == 35) {
+        price = 1.55;
+      }
       else if (height == 35 && width == 35 || height == 35 && width == 35) {
-        price = 1.50;
+        price = 1.80;
+      }
+      else if (height == 30 && width == 40 || height == 40 && width == 30) {
+        price = 1.80;
       }
       else if (height == 40 && width == 35 || height == 35 && width == 40) {
-        price = 1.60;
-      }
-      else if (height == 40 && width == 40 || height == 40 && width == 40) {
         price = 1.90;
       }
+      else if (height == 40 && width == 40 || height == 40 && width == 40) {
+        price = 2.30;
+      }
       else if (height == 45 && width == 40 || height == 40 && width == 45) {
-        price = 2.15;
+        price = 2.60;
       }
       else if (height == 45 && width == 45 || height == 45 && width == 45) {
-        price = 2.25;
+        price = 2.70;
       }
       else if (height == 50 && width == 40 || height == 40 && width == 50) {
-        price = 2.25;
+        price = 2.70;
       }
       else if (height == 50 && width == 45 || height == 45 && width == 50) {
-        price = 2.45;
+        price = 2.95;
       }
       else if (height == 50 && width == 50 || height == 50 && width == 50) {
-        price = 2.70;
+        price = 3.25;
       }
       else if (height == 55 && width == 40 || height == 40 && width == 55) {
-        price = 2.45;
+        price = 2.95;
       }
       else if (height == 55 && width == 45 || height == 45 && width == 55) {
-        price = 2.70;
+        price = 3.25;
       }
       else if (height == 55 && width == 50 || height == 50 && width == 55) {
-        price = 2.90;
+        price = 3.50;
       }
       else if (height == 55 && width == 55 || height == 55 && width == 55) {
-        price = 3.15;
+        price = 3.80;
       }
       else if (height == 60 && width == 55 || height == 55 && width == 60) {
-        price = 3.30;
+        price = 3.95;
       } else {
         $('#price').text('Invalid Input');
         return 0;
@@ -209,7 +218,7 @@
 
     }
 
-    function change_class(name,label_name) {
+    function change_class(name, label_name) {
       var checked = $('#' + name).is(":checked")
       if (checked == true) {
         $('#' + label_name).removeClass('btn-secondary')
