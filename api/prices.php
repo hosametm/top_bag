@@ -1,18 +1,19 @@
 <?php
+header('Access-Control-Allow-Origin: *');
 header('Content-Type: application/json; charset=utf-8');
-
 require_once("config.php");
-
-$query = "SELECT * FROM `prices`";
-$data = $conn->query($query);
-$prices = [];
-if ($data->num_rows > 0) {
-    // OUTPUT DATA OF EACH ROW
-    while ($row = $data->fetch_assoc()) {
-        $prices[] = $row;
+if (isset($_GET['width']) && isset($_GET['height'])) {
+    $query = "SELECT DISTINCT price FROM `prices` where width = " . $_GET['width'] . " AND height = " . $_GET['height'] . "";
+    $data = $conn->query($query);
+    $prices = [];
+    $i = 0;
+    while ($row = mysqli_fetch_assoc($data)) {
+        //$data['types'][$row['id']] = $row;
+        $prices = $row;
     }
+    $conn->close();
+    echo json_encode($prices);
 } else {
-    echo "0 results";
+    die("no data");
+    // print_r($_GET);die;
 }
-$conn->close();
-echo json_encode($prices);
