@@ -4,9 +4,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Hugo 0.101.0">
+  <link rel="icon" href="../assets/images/logo.jpg">
+
+  <!-- <meta name="description" content=""> -->
+  <!-- <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors"> -->
+  <!-- <meta name="generator" content="Hugo 0.101.0"> -->
   <title>Top Bag | Pricing</title>
 
   <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -70,7 +72,7 @@
 
 
   <!-- Custom styles for this template -->
-  <link href="style.css" rel="stylesheet">
+  <link href="pricing.css" rel="stylesheet">
 </head>
 
 <body class="text-center">
@@ -94,8 +96,6 @@
         <input type="number" class="form-control" id="weight" placeholder="weight (gm)" value="65">
         <label for="floatingPassword">weight (gm)</label>
       </div> -->
-
-
       <div class="checkbox mb-3">
         <label class="btn btn-secondary " style="width: 49%; " id="hand_lable">
           <input type="checkbox" hidden id="hand" value="1" style="margin: 4px;"
@@ -122,9 +122,34 @@
     function Calculate() {
       var height = $('#height').val();
       var width = $('#width').val();
+      $.get("https://hosametm.000webhostapp.com/api/prices.php?height=" + height + "&width=" + width + "", function (data) {
+        console.log(data);
+        // var obj = JSON.parse(data)
+        price = parseFloat(data.price);
+        if (data == 0) {
+          $('#price').text('Invalid Input');
+        } else {
+          // console.log(price);
+
+          var hand = $('#hand').is(":checked")
+          var face = $('#face').is(":checked")
+          if (hand == true) {
+            price += 15;
+
+          } else {
+            price = price;
+          }
+          if (face == true) {
+            price += 10;
+
+          } else {
+            price = price;
+          }
+          $('#price').text('Price is : ' + (price / 100).toFixed(2) + ' pound');
+        }
+      })
       // var weight = $('#weight').val();
-      var hand = $('#hand').is(":checked")
-      var face = $('#face').is(":checked")
+
       // var in_hand_height = parseFloat(height) + 20
       // var out_hand_height = parseFloat(height) + 15
       // finall_weight = (((in_hand_height * width) / 10000) * 2) * weight
@@ -195,25 +220,10 @@
       } else {
         $('#price').text('Invalid Input');
         return 0;
-
       }
 
-      if (hand == true) {
-        price += 0.15;
-
-      } else {
-        price = price;
-      }
-      if (face == true) {
-        price += 0.10;
-
-      } else {
-        price = price;
 
 
-      }
-      // console.log(price);
-      $('#price').text('Price is : ' + price.toFixed(2) + ' pound');
 
     }
 
