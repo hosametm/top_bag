@@ -118,7 +118,7 @@
   <script src="../assets/dist/js/jquery-3.6.0.min.js"></script>
 
   <script>
-    function Calculate() {
+    /*function Calculate() {
       var height = $('#height').val();
       var width = $('#width').val();
       // var weight = $('#weight').val();
@@ -194,7 +194,6 @@
       } else {
         $('#price').text('Invalid Input');
         return 0;
-
       }
 
       if (hand == true) {
@@ -208,12 +207,23 @@
 
       } else {
         price = price;
-
-
       }
       // console.log(price);
       $('#price').text('Price is : ' + price.toFixed(2) + ' pound');
+    }
+*/
 
+    function get_price() {
+      var width = $('#width').val();
+      var height = $('#height').val();
+      $.get("https://hosametm.000webhostapp.com/api/get_price.php?height=" + height + "&width=" + width, function (price, status) {
+        if (status) {
+          console.log(price);
+        } else {
+          console.log('Fail');
+        }
+
+      })
     }
 
     function change_class(name, label_name) {
@@ -224,7 +234,6 @@
       } else {
         $('#' + label_name).removeClass('btn-primary')
         $('#' + label_name).addClass('btn-secondary')
-
       }
       console.log(checked);
     }

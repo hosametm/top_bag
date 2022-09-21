@@ -1,0 +1,12 @@
+get price api link
+http://localhost/top_bag/api/get_price.php?height=15&width=20
+
+edit price api link
+http://localhost/top_bag/api/edit_price.php?price_id=2&price_value=30
+
+website link
+https://hosametm.000webhostapp.com
+
+
+edit api 
+https://hosametm.000webhostapp.com/api/edit_price.php?price_id=2&price_value=120&user_id=1
