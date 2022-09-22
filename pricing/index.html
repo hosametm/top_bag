@@ -111,6 +111,7 @@
         <!-- <button type="button" class="btn btn-outline-secondary btn-lg px-4" onclick="clear()">Clear</button> -->
       </div>
     </form>
+    <a href="./prices.html">show all prices</a>
     <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
 
 
@@ -218,8 +219,30 @@
       var height = $('#height').val();
       $.get("https://hosametm.000webhostapp.com/api/get_price.php?height=" + height + "&width=" + width, function (price, status) {
         if (status) {
-          console.log(price);
+          console.log(price.price);
+          if (price.price != 0) {
+            var price = parseFloat(price.price) / 100;
+            var hand = $('#hand').is(":checked")
+            var face = $('#face').is(":checked")
+            if (hand == true) {
+              price += 0.15;
+
+            } else {
+              price = price;
+            }
+
+            if (face == true) {
+              price += 0.10;
+
+            } else {
+              price = price;
+            }
+            $('#price').text('Price is : ' + price.toFixed(2) + ' pound');
+          } else {
+            $('#price').text('Invalid Input');
+          }
         } else {
+          $('#price').text('Failed to connect to server');
           console.log('Fail');
         }
 
